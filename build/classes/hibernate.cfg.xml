@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD 5.0//EN"  
+"http://hibernate.sourceforge.net/hibernate-mapping-5.0.dtd">  
+  
+<hibernate-mapping>  
+<class name="model.User" table="user">  
+          <id name="uid">  
+          <generator class="increment"></generator>  
+          </id>  
+            
+
+           <property name="name"></property>
+            <property name="email"></property>
+          <property name="password"></property> 
+        
+</class>
+
+<class name="model.IncomeCategory" table="incomecategory">  
+          <id name="inccatid">  
+          <generator class="increment"></generator>  
+          </id>  
+  <property name="uid"></property>
+           <property name="incsource"></property>
+            <property name="descrip"></property>
+          
+        
+</class>    
+            <class name="model.Income" table="income">  
+          <id name="incmid">  
+          <generator class="increment"></generator>  
+          </id>  
+ 
+           <property name="catid"></property>
+            <property name="uid"></property>
+              <property name="amount"></property>
+            <property name="date"></property>
+          
+        
+</class>  
+<class name="model.ExpenseCategory" table="expensecategory">  
+          <id name="expcatid">  
+          <generator class="increment"></generator>  
+          </id>  
+  <property name="uid"></property>
+           <property name="reason"></property>
+            <property name="descrip"></property>
+          
+        
+</class>    
+            <class name="model.Expense" table="expense">  
+          <id name="expid">  
+          <generator class="increment"></generator>  
+          </id>  
+ 
+           <property name="catid"></property>
+            <property name="uid"></property>
+              <property name="amount"></property>
+            <property name="date"></property>
+          
+        
+</class> 
+</hibernate-mapping>

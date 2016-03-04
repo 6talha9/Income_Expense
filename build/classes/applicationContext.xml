@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="          http://www.springframework.org/schema/beans          http://www.springframework.org/schema/beans/spring-beans-4.0.xsd          http://www.springframework.org/schema/context          http://www.springframework.org/schema/context/spring-context-4.2.xsd          http://www.springframework.org/schema/tx          http://www.springframework.org/schema/tx/spring-tx-4.2.xsd          http://www.springframework.org/schema/aop          http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+<!--     <beans   -->
+<!--     xmlns="http://www.springframework.org/schema/beans"   -->
+<!--     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   -->
+<!--     xmlns:p="http://www.springframework.org/schema/p"  -->
+<!--     xmlns:tx="http://www.springframework.org/schema/tx" -->
+<!--     xsi:schemaLocation="http://www.springframework.org/schema/beans   -->
+<!--         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd -->
+<!--         http://www.springframework.org/schema/tx/spring-tx-4.2.xsd -->
+<!--         http://www.springframework.org/schema/tx">   -->
+<!--         xmlns:tx="http://www.springframework.org/schema/tx" -->
+<!--         xmlns:aop="http://www.springframework.org/schema/aop" -->
+     
+<!--             http://www.springframework.org/schema/tx -->
+<!--             http://www.springframework.org/schema/tx/spring-tx.xsd -->
+<!--             http://www.springframework.org/schema/aop -->
+<!--             http://www.springframework.org/schema/tx/spring-aop.xsd -->
+             
+      
+      
+        <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">  
+            <property name="driverClassName"  value="com.mysql.jdbc.Driver"></property>  
+            <property name="url" value="jdbc:mysql://localhost:3306/classpro"></property>  
+            <property name="username" value="root"></property>  
+            <property name="password" value=""></property>  
+        </bean>  
+          
+        <bean id="mysessionFactory"  class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">  
+            <property name="dataSource" ref="dataSource"></property>  
+              
+            <property name="mappingResources">  
+            <list>  
+            <value>hibernate.cfg.xml</value>  
+            </list>  
+            </property>  
+              
+            <property name="hibernateProperties">  
+                <props>  
+                    <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>  
+                    <prop key="hibernate.hbm2ddl.auto">update</prop>  
+                    <prop key="hibernate.show_sql">true</prop>  
+                    <prop key="hibernate.">COMMIT/AUTO </prop> 
+                </props>  
+            </property>  
+        </bean>  
+          
+        <bean id="template" class="org.springframework.orm.hibernate5.HibernateTemplate">  
+        <property name="sessionFactory" ref="mysessionFactory"></property>  
+        </bean>  
+          
+        <bean id="u" class="model.UserDao">  
+        <property name="template" ref="template"></property>  
+        </bean>  
+                    <bean id="icat" class="model.IncomeCategoryDao">  
+        <property name="template" ref="template"></property>  
+        </bean> 
+                   <bean id="ecat" class="model.ExpenseCategoryDao">  
+        <property name="template" ref="template"></property>  
+        </bean> 
+                        <bean id="i" class="model.IncomeDao">  
+        <property name="template" ref="template"></property>  
+        </bean> 
+                         <bean id="e" class="model.ExpenseDao">  
+        <property name="template" ref="template"></property>  
+        </bean> 
+      <tx:annotation-driven transaction-manager="txManager"/> 
+          <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+          <property name="sessionFactory" ref="mysessionFactory"></property>  
+                  </bean>
+                  
+     
+         
+  
+         
+ </beans>  
