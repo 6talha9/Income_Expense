@@ -13,7 +13,7 @@ public class IncomeDao {
 	    	
 	    	this.template = template;  
 	    }  
-	    //method to save employee 
+	
 
 	    @Transactional(readOnly=false)
 	    public void saveIncome(Income i){  
@@ -21,15 +21,15 @@ public class IncomeDao {
 	    	  	template.save(i); 
 	        
 	    }  
-	    //method to update employee  
+	 
 	    public void updateIncome(Income i){  
 	        template.update(i);  
 	    }  
-	    //method to delete employee  
+	
 	    public void deleteIncome(Income i){  
 	        template.delete(i);  
 	    }  
-	    //method to return one employee of given id  
+	    
 	    public Income getById(int id){  
 	    	Income i=(Income)template.get(Income.class,id);  
 	        return i;  

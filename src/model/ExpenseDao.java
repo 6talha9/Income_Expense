@@ -13,7 +13,7 @@ public class ExpenseDao {
 	    	
 	    	this.template = template;  
 	    }  
-	    //method to save employee 
+	 
 
 	    @Transactional(readOnly=false)
 	    public void saveExpense(Expense i){  
@@ -21,15 +21,15 @@ public class ExpenseDao {
 	    	  	template.save(i); 
 	        
 	    }  
-	    //method to update employee  
+	    
 	    public void updateExpense(Expense i){  
 	        template.update(i);  
 	    }  
-	    //method to delete employee  
+	
 	    public void deleteExpense(Expense i){  
 	        template.delete(i);  
 	    }  
-	    //method to return one employee of given id  
+	    
 	    public Expense getById(int id){  
 	    	Expense i=(Expense)template.get(Expense.class,id);  
 	        return i;  

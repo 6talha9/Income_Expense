@@ -16,7 +16,7 @@ public class UserDao {
     	
     	this.template = template;  
     }  
-    //method to save employee 
+    //method to save User 
 
     @Transactional(readOnly=false)
     public void saveUser(User u){  
@@ -24,15 +24,15 @@ public class UserDao {
     	  	template.save(u); 
         
     }  
-    //method to update employee  
+    //method to update User  
     public void updateUser(User u){  
         template.update(u);  
     }  
-    //method to delete employee  
+    //method to delete User  
     public void deleteUser(User u){  
         template.delete(u);  
     }  
-    //method to return one employee of given id  
+    //method to return one User of given id  
     public User getById(int id){  
     	User e=(User)template.get(User.class,id);  
         return e;  
@@ -47,7 +47,7 @@ public class UserDao {
         { u=null;}
       return u;
     }  
-    //method to return all employees  
+    //method to return all Users  
     public List<User> getUsers(){  
         List<User> list=new ArrayList<User>();  
         list=template.loadAll(User.class);  
